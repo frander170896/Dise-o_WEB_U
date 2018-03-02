@@ -1,2 +1,0 @@
-Frander,Portero,60147485,frander@gmail.com,San Jose,0,1,
-Gerson,Portero,60147485,Gerson@gmail.com,Heredia,1,2,

@@ -10,17 +10,31 @@
     <?php
         include_once('logica/logica.php');
         $logica = new logica();
-        $lista = $logica->leerArchivo();
+        $lista = $logica->ObtenerEncabezadoContacto();
         print_r($lista);
     ?>
+    <h1>Formulario</h1>
+    <form action="logica/logica.php" method="POST">
+        <input type="hidden" name="formulario" value="1">
+        <label for="name">Nombre: </label><br>
+        <input type="text" name="name"><br>
+        <label for="name" >Trabajo: </label><br>
+        <input type="text" name="work" ><br>
+        <label for="name" >Teléfono: </label><br>
+        <input type="tel"name="mobile"><br>
+        <label for="name" >Correo: </label><br>
+        <input type="email" name="email"><br>
+        <label for="name">Dirección: </label><br>
+        <textarea name="address"></textarea><br>
+
+        <input type="submit" value="Guardar">
+        
+    </form>
+    <h1>Todos los contactos</h1>
     <table border="1">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Work</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>Address</th>
             </tr>
         </thead>
         <tbody>
@@ -28,10 +42,24 @@
                 if($value->getState() != 1){?>
                     <tr>
                         <td><?php echo $value->getName() ?></td>
-                        <td><?php echo $value->getWork()?></td>
-                        <td><?php echo $value->getMobile() ?></td>
-                        <td><?php echo $value->getEmail()?></td>
-                        <td><?php echo $value->getAddress()?></td>
+                        <?php if(isset($_SESSION["Mostrar"]) && $_SESSION["id_detalle"] ==  $_SESSION["id"] ){ ?>
+                            <td><?php echo $_SESSION["work"] ?></td>
+                            <td><?php echo $_SESSION["mobile"] ?></td>
+                            <td><?php echo $_SESSION["email"] ?></td>
+                            <td><?php echo $_SESSION["address"] ?></td>
+
+                        <?php } ?>
+                        
+                        <form action="logica/logica.php" method="POST">
+                            <input type="hidden" value="<?php echo $value->getId()?>">
+                            <input type="hidden" name="formulario" value="2">
+                            <td><input type="submit" value="Detalle"></td>
+                        </form>
+                        <form action="logica/logica.php" method="POST">
+                            <input type="hidden" value="<?php echo $value->getId()?>">
+                            <input type="hidden" name="formulario" value="3">
+                            <td><input type="submit" value="Eliminar"></td>
+                        </form>  
                     </tr>
             <?php }   
              } ?>
