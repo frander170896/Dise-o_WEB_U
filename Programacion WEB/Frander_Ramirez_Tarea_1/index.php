@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <script src="js/jquery.min.js" ></script>
-    <script src="js/bootstrap.js" ></script>
-    <script src="js/jsIndex.js" ></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jsIndex.js"></script>
     <Link rel=StyleSheet href="css/bootstrap.css" Type="text/css"> 
     <Link rel=StyleSheet href="css/fonts/glyphicons-halflings-regular.eot" Type="text/css">
     <Link rel=StyleSheet href="css/fonts/glyphicons-halflings-regular.svg" Type="text/css"> 
@@ -37,27 +37,26 @@
 
         }else if($opcion == 2){
            $lista = array();
-           array_push($lista, new unidad("Milimetros","Milimetros^2"));
-           array_push($lista, new unidad("Centimetros","Centimetros^2"));
-           array_push($lista, new unidad("Metros","Metros^2"));
-           array_push($lista, new unidad("Kilometros","Kilometros^2"));
-           array_push($lista, new unidad("Pulgadas","Pulgadas^2"));
-           array_push($lista, new unidad("Pies","Pies^2"));
-           array_push($lista, new unidad("Yardas","Yardas^2"));
+           array_push($lista, new unidad("Milimetros^2","Milimetros^2"));
+           array_push($lista, new unidad("Centimetros^2","Centimetros^2"));
+           array_push($lista, new unidad("Metros^2","Metros^2"));
+           array_push($lista, new unidad("Kilometros^2","Kilometros^2"));
+           array_push($lista, new unidad("Pulgadas^2","Pulgadas^2"));
+           array_push($lista, new unidad("Pies^2","Pies^2"));
+           array_push($lista, new unidad("Yardas^2","Yardas^2"));
            array_push($lista, new unidad("Hectareas","Hectareas"));
-           array_push($lista, new unidad("Millas","Millas^2"));
-           array_push($lista, new unidad("Acres","Acres"));
+           array_push($lista, new unidad("Millas^2","Millas^2"));
+         
         }else if($opcion == 3){
             $lista = array();
-           array_push($lista, new unidad("Centimetros","Centimetros^3"));
-           array_push($lista, new unidad("Metros","Metros^3"));
-           array_push($lista, new unidad("Pulgadas","Pulgadas^3"));
-           array_push($lista, new unidad("Pies","Pies^3"));
-           array_push($lista, new unidad("Yardas","Yardas^3"));
-           array_push($lista, new unidad("Galones","Galones[RU]"));
-           array_push($lista, new unidad("Galones2","Galones[EU]"));
+           array_push($lista, new unidad("Centimetros^3","Centimetros^3"));
+           array_push($lista, new unidad("Metros^3","Metros^3"));
+           array_push($lista, new unidad("Pulgadas^3","Pulgadas^3"));
+           array_push($lista, new unidad("Pies^3","Pies^3"));
+           array_push($lista, new unidad("Yardas^3","Yardas^3"));
+           array_push($lista, new unidad("Decimetros^3","Decimetros^3"));
         }else if($opcion == 4){
-           $lista = array();
+          /* $lista = array();
            array_push($lista, new unidad("Pulgadas","Pulgadas^3"));
            array_push($lista, new unidad("Pies","Pies^3"));
            array_push($lista, new unidad("Litros","Litros"));
@@ -67,25 +66,23 @@
            array_push($lista, new unidad("Pintas_Liquidas","Pintas Liquídas"));
            array_push($lista, new unidad("Quarter_Liquidas","Quarter Liquídas"));
            array_push($lista, new unidad("Bushles","Bushles[RU]"));
-           array_push($lista, new unidad("Bushles2","Bushles[EU]"));
+           array_push($lista, new unidad("Bushles2","Bushles[EU]"));*/
         }else if($opcion == 5){
             $lista = array();
             array_push($lista, new unidad("Gramos","Gramos"));
             array_push($lista, new unidad("Kilogramos","Kilogramos"));
-            array_push($lista, new unidad("Onzas","Onzas[AV]"));
-            array_push($lista, new unidad("Onzas1","Toneladas[Troy]"));
-            array_push($lista, new unidad("Libras","Toneladas^3"));
-            array_push($lista, new unidad("Libras1","Toneladas[AV]"));
-            array_push($lista, new unidad("Libras2","Toneladas[Troy]"));
-            array_push($lista, new unidad("Libras2","Toneladas[RU]"));
-            array_push($lista, new unidad("Libras2","Toneladas[EU]"));
+            array_push($lista, new unidad("Onzas","Onzas"));
+            array_push($lista, new unidad("Libras","Libras"));
         }else if($opcion == 6){
             $lista = array();
-            array_push($lista, new unidad("Kílometros hora","Kílometros hora"));
-            array_push($lista, new unidad("Caballos de vapor","Caballos de vapor"));
-            array_push($lista, new unidad("Millas hora","Millas hora"));
-            array_push($lista, new unidad("Nudos","Kílometros"));
-            array_push($lista, new unidad("Caballos de fuerza","Pulgadas")); 
+            array_push($lista, new unidad("Kílometros/h","Kílometros/h"));
+            array_push($lista, new unidad("Metros/s","Metros/s"));
+            array_push($lista, new unidad("Kilometros/s","Kilometros/s"));
+            array_push($lista, new unidad("Nudos","Nudos"));
+            array_push($lista, new unidad("Milimetros/s","Milimetros/s"));
+            array_push($lista, new unidad("Millas/s","Millas/s")); 
+            array_push($lista, new unidad("Millas/h","Millas/h"));  
+            
         }
      }
     ?>
@@ -103,7 +100,7 @@
                                     <option value="1">Longitud</option>
                                     <option value="2">Superficie</option>
                                     <option value="3">Volumen</option>
-                                    <option value="4">Capacidad</option>
+                                    <!--<option value="4">Capacidad</option>-->
                                     <option value="5">Peso</option>
                                     <option value="6">Velocidad Potencia</option>
                                 </select>
@@ -168,7 +165,7 @@
                                     <div class="form-group">
                                         <select  class="form-control" name="convertir" id="select1">
                                         <?php foreach($lista as $unidad){ ?>
-                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo htmlentities($unidad->getNombre()) ?></option>
+                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo $unidad->getNombre() ?></option>
                                         <?php }?>
                                         </select>
                                     </div>
@@ -198,6 +195,7 @@
                             <div class="panel-body">
                                 <form action="logica/logica_convertidor.php" method="POST">
                                     <input type="hidden" name="formulario" value="3">
+                                    
                                     <div class="form-group">
                                     <label for="valor">Quiero Convertir:</label>
                                     <input type="text" id="valor" name="valor" class="form-control" required>
@@ -205,7 +203,7 @@
                                     <div class="form-group">
                                         <select  class="form-control" name="convertir" id="select1">
                                         <?php foreach($lista as $unidad){ ?>
-                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo htmlentities($unidad->getNombre()) ?></option>
+                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo $unidad->getNombre() ?></option>
                                         <?php }?>
                                         </select>
                                     </div>
@@ -225,7 +223,7 @@
                 </div>
             <?php } ?>  
         <?php } ?>
-         <!--Formulario 4 Volumen-->
+         <!--Formulario 4 Capacidad-->
          <?php if(isset($opcion)){
             if($opcion == "4"){ ?>
                 <div class="row">
@@ -242,7 +240,7 @@
                                     <div class="form-group">
                                         <select  class="form-control" name="convertir" id="select1">
                                         <?php foreach($lista as $unidad){ ?>
-                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo htmlentities($unidad->getNombre()) ?></option>
+                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo $unidad->getNombre() ?></option>
                                         <?php }?>
                                         </select>
                                     </div>
@@ -262,7 +260,7 @@
                 </div>
             <?php } ?>  
         <?php } ?> 
-         <!--Formulario 4 Volumen-->
+         <!--Formulario 5 Peso-->
          <?php if(isset($opcion)){
             if($opcion == "5"){ ?>
                 <div class="row">
@@ -279,7 +277,7 @@
                                     <div class="form-group">
                                         <select  class="form-control" name="convertir" id="select1">
                                         <?php foreach($lista as $unidad){ ?>
-                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo htmlentities($unidad->getNombre()) ?></option>
+                                            <option value="<?php echo $unidad->getValor() ?>"><?php echo $unidad->getNombre() ?></option>
                                         <?php }?>
                                         </select>
                                     </div>
