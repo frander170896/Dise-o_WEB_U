@@ -22,6 +22,10 @@
             $nombreArchivo = $array[1];
             $cont->eliminarArchivo($eliminar,$nombreArchivo);
         }
+        if($_POST["form"] == 4){
+            $cont = new administrador();
+            $cont->CompartirAchivo();
+        }
     }
 
     class administrador{
@@ -419,8 +423,6 @@
                 } 
             }
             print_r($lista);
-
-
         
             if(file_exists("../Almacenamiento/".$_SESSION['user']."/".$nombreArchivo)){
                 unlink("../Almacenamiento/".$_SESSION['user']."/".$nombreArchivo);
@@ -429,7 +431,77 @@
            header("location: ../Interfaz/PaginaPrincipal.php");
 
         }
-    
+        public function CompartirAchivo(){
+            $emisor = $_POST['emisor'];
+            $archivo = $_POST['nombre_archivo'];
+            $receptor = $_POST['receptor'];
+            $direccion = "../Almacenamiento/".trim($receptor)."/Compartido";
+            if(!file_exists($direccion)){
+                mkdir($direccion, 0700);
+               
+                $file = fopen($direccion."/archivos_compartidos.txt", "a");
+                fwrite($file, trim($emisor).'$'.trim($receptor).'$'.trim($archivo).'$'."|\n");
+                fclose($file);
+            }else{
+                $file = fopen($direccion."/archivos_compartidos.txt", "a");
+                fwrite($file, trim($emisor).'$'.trim($receptor).'$'.trim($archivo).'$'."|\n");
+                fclose($file);
+            }
+            header("location: ../Interfaz/PaginaPrincipal.php");
+        }
+        public function obtenerCompartidos(){
+            $lista  = array();
+            $direccion = "../Almacenamiento/".$_SESSION['user']."/Compartido";
+            if(!file_exists($direccion)){
+                mkdir($direccion, 0700);
+                
+                $direccion_compartidos =$direccion."/archivos_compartidos.txt";
+                $contenido = file_get_contents($direccion_compartidos);
+                $lista = administrador::ObtenerDatosCompartidos($contenido); 
+            }else{
+               $direccion_compartidos = $direccion."/archivos_compartidos.txt";
+               $contenido = file_get_contents($direccion_compartidos);
+               $lista = administrador::ObtenerDatosCompartidos($contenido); 
+            }
+            
+            return $lista;
+        }
+        public function ObtenerDatosCompartidos($dato){
+            $lista=array();
+            $emisor = "";
+            $receptor = "";
+            $archivo = "";
+
+            $temp = "";
+            $contador=0;
+
+            for($i = 0; $i < strlen($dato); $i++){
+                if($dato[$i] != '|'){
+                    if($dato[$i] != '$'){
+                        $temp.= $dato[$i];
+                    }
+                    else if($contador == 0){
+                        $emisor = $temp;
+                        $contador++;
+                        $temp = "";
+                    }
+                    else if($contador == 1){
+                        $receptor = $temp;
+                        $contador++;
+                        $temp = "";
+                    }
+                    else if ($contador == 2){
+                        $archivo = $temp;
+                        $temp = "";
+                    }
+                }else{
+                    array_push($lista,array("emisor"=>$emisor,"receptor"=>$receptor,"archivo"=>$archivo));
+                    $contador = 0;
+                }
+            }
+            
+            return $lista;
+        }
     }
     
 

@@ -61,6 +61,13 @@
         echo $existe . '<br>';
         return $existe;
     }
+    public function obtenerRegistros(){
+        $direccion = "../Datos/Usuarios.txt";
+        $contenido = file_get_contents($direccion);
+        $lista = inicioSesion::ObtenerUsuarios($contenido); 
+
+        return  $lista;
+    }
     public function ObtenerUsuarios($dato){
         $lista=array();
         $nombre = "";
@@ -103,6 +110,9 @@
                 if(inicioSesion::escribirArchivo($direccion,$_POST['nombre'],$_POST['clave'])){
                     $_SESSION['respuesta'] = "El usuario ha sido creado exitosamente";
                     mkdir("../Almacenamiento/".$_POST['nombre'], 0700);
+                    mkdir("../Almacenamiento/".$_POST['nombre']."/Compartido", 0700);
+                    $file = fopen("../Almacenamiento/".$_POST['nombre']."/Compartido"."/archivos_compartidos.txt","a");
+                    fclose($file);
                     header('location: ../registro.php');
                 }else{
                     $_SESSION['respuesta'] = "Ocurrio un error al crear el usuario";

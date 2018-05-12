@@ -1,0 +1,47 @@
+body{
+    margin:0 auto;
+    padding: 0px;
+    background: #cccccc;
+    height: 1000px;
+}
+.container{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+.articulo{
+    width: 50%;
+    height: auto;
+    float:left;
+}
+h1,h2{
+    text-align: center;
+}
+.formArchivo{
+    width: 50%;
+}
+.tablaArchivos{
+    width: 100%;
+}
+.scroll {
+    margin: 0 auto;
+    width: 800px;
+    height: 207px;
+    overflow-y :auto;
+    overflow-x :auto;
+	padding: 0px;
+}
+
+table.contenido{
+    width: 100%;
+    margin: 0 auto;
+}
+.botonflotante{
+    overflow: hidden;
+}
+.centrarBoton{
+    float:left;
+    margin-left:46%;
+    height: 50px;
+    text-align: center;
+}
